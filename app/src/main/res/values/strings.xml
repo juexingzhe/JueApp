@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JueApp</string>
+    <string name="action_camera">Camera</string>
+    <string name="action_favorite">最爱</string>
 </resources>

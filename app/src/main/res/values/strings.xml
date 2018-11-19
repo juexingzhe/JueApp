@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">JueApp</string>
-    <string name="action_camera">Camera</string>
+    <string name="action_photo">Take Photo</string>
+    <string name="action_video">Record Video</string>
+    <string name="action_camera">Take Photo</string>
+
     <string name="action_favorite">最爱</string>
     <string name="capture_image">Capture</string>
+    <string name="capture_video">Record</string>
     <string name="fileprovider_authority">com.example.juexingzhe.jueapp.fileprovider</string>
 </resources>

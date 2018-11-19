@@ -11,6 +11,16 @@
 
     <!-- Settings, should always be in the overflow -->
     <item
+        android:id="@+id/action_photo"
+        android:title="@string/action_photo"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_video"
+        android:title="@string/action_video"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_camera"
         android:title="@string/action_camera"
         app:showAsAction="never" />

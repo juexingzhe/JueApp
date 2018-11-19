@@ -53,10 +53,19 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
 
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
+        Intent intent;
         switch (menuItem.getItemId()) {
-            case R.id.action_camera:
+            case R.id.action_photo:
                 // User chose the "Settings" item, show the app settings UI...
-                Intent intent = new Intent(this, CameraActivity.class);
+                intent = new Intent(this, PhotoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_video:
+                intent = new Intent(this, VideoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.action_camera:
+                intent = new Intent(this, CameraActivity.class);
                 startActivity(intent);
                 break;
             case R.id.action_favorite:

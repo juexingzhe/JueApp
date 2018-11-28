@@ -2,10 +2,14 @@
     <string name="app_name">JueApp</string>
     <string name="action_photo">Take Photo</string>
     <string name="action_video">Record Video</string>
-    <string name="action_camera">Take Photo</string>
+    <string name="action_camera">Control Camera</string>
+    <string name="action_region">Region Test</string>
 
     <string name="action_favorite">最爱</string>
     <string name="capture_image">Capture</string>
     <string name="capture_video">Record</string>
     <string name="fileprovider_authority">com.example.juexingzhe.jueapp.fileprovider</string>
+    <string name="anchor">Anchor</string>
+    <string name="click">Click</string>
+    <string name="pop_btn">Btn On Pop</string>
 </resources>

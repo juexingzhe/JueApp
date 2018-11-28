@@ -22,6 +22,28 @@ allprojects {
     }
 }
 
+def printTaskInputsOutputs(String taskName) {
+    def task = project.tasks.findByName(taskName)
+
+    if (task) {
+        println 'find' + taskName + 'task ----------'
+
+        task.doLast {
+            task.inputs.files.each {
+                println('input file : ' + it.absolutePath)
+            }
+
+            println '---------------------------------------------------'
+
+            task.outputs.files.each {
+                println('output file: ' + it.absolutePath)
+            }
+        }
+    }
+}
+
+
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

@@ -5,7 +5,9 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Rect;
+import android.media.ExifInterface;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.widget.ImageView;
@@ -16,6 +18,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class BitmapUtils {
 
@@ -119,6 +122,59 @@ public class BitmapUtils {
                 bitmap.setPixel(i, j, color);//将bitmap的每个像素点都设置成相应的颜色
             }
         }
+    }
+
+    /**
+     * 获取图片的旋转方向
+     *
+     * @param inputStream
+     * @return degree
+     */
+    public static int getExifOrientation(InputStream inputStream) {
+        int orientation;
+        int digree = 0;
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                ExifInterface exifInterface = new ExifInterface(inputStream);
+                orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, -1);
+                switch (orientation) {
+                    case ExifInterface.ORIENTATION_ROTATE_90:
+                        digree = 90;
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_180:
+                        digree = 180;
+                        break;
+                    case ExifInterface.ORIENTATION_ROTATE_270:
+                        digree = 270;
+                        break;
+                    default:
+                        digree = 0;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return digree;
+    }
+
+    /**
+     * 旋转图片
+     *
+     * @param sourceBitmap
+     * @param digree
+     * @return
+     */
+    public static Bitmap rotateBitmap(@NonNull Bitmap sourceBitmap, int digree) {
+        if (digree == 0) {
+            return sourceBitmap;
+        }
+
+        Matrix matrix = new Matrix();
+        matrix.postRotate(digree);
+
+        return Bitmap.createBitmap(sourceBitmap,
+                0, 0, sourceBitmap.getWidth(), sourceBitmap.getHeight(), matrix, true);
     }
 
 

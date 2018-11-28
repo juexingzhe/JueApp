@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                 intent = new Intent(this, CameraActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.action_region:
+                intent = new Intent(this, RegionActivity.class);
+                startActivity(intent);
+                break;
             case R.id.action_favorite:
                 // User chose the "Favorite" action, mark the current item
                 // as a favorite...

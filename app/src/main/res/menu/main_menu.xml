@@ -25,4 +25,10 @@
         android:title="@string/action_camera"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_region"
+        android:title="@string/action_region"
+        app:showAsAction="never" />
+
+
 </menu>

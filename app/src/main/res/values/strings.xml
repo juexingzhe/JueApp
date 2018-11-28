@@ -12,4 +12,7 @@
     <string name="anchor">Anchor</string>
     <string name="click">Click</string>
     <string name="pop_btn">Btn On Pop</string>
+    <string name="loading_tip">加载中...</string>
+    <string name="load_nomore_tip">没有更多数据了</string>
+    <string name="load_err_tip">加载失败请点击重试</string>
 </resources>

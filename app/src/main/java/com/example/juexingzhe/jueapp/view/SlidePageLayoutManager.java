@@ -3,6 +3,7 @@ package com.example.juexingzhe.jueapp.view;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.example.juexingzhe.jueapp.presenter.CardAdapter;
@@ -12,9 +13,11 @@ import com.example.juexingzhe.jueapp.util.PixelUtils;
 import java.util.ArrayList;
 
 public class SlidePageLayoutManager extends GridLayoutManager {
+    private static final String TAG = SlidePageLayoutManager.class.getSimpleName() + "_log";
     private static final int VISIBLE_EMOTICON_COUNT = 3;
     private static final int ITEM_OFFSET = 20;
 
+    private Context context;
     private int mItemCount;
     private int mScrollOffset = 0;
     private CardAdapter commonAdapter;
@@ -25,15 +28,20 @@ public class SlidePageLayoutManager extends GridLayoutManager {
     private int itemWidth;
     private int itemHeight;
 
+    private int bottomHeight;
+
+    private RecyclerView.Recycler recycler;
+
     public SlidePageLayoutManager(Context context, CardAdapter commonAdapter) {
         super(context, 1);
+        this.context = context;
         this.commonAdapter = commonAdapter;
 
         this.snapHelper = new PageSnapHelper();
 
         itemWidth = PixelUtils.dip2px(context, 279);
         itemHeight = PixelUtils.dip2px(context, 372);
-
+        bottomHeight = PixelUtils.dip2px(context, 30);
     }
 
     @Override
@@ -59,15 +67,16 @@ public class SlidePageLayoutManager extends GridLayoutManager {
         }
 
         mItemCount = getItemCount();
-        mScrollOffset = Math.min(Math.max(0, mScrollOffset), (mItemCount - 1) * itemHeight);
+        mScrollOffset = Math.min(Math.max(0, mScrollOffset), (mItemCount - 2) * itemHeight + bottomHeight);
 
+        this.recycler = recycler;
         layoutChild(recycler);
     }
 
     @Override
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int pendingScrollOffset = mScrollOffset + dy;
-        mScrollOffset = Math.min(Math.max(0, pendingScrollOffset), (mItemCount - 1) * itemHeight);
+        mScrollOffset = Math.min(Math.max(0, pendingScrollOffset), (mItemCount - 2) * itemHeight + bottomHeight);
         // Log.i(PageSnapHelper.LAYOUT_TAG, "scrollVerticallyBy ===== mScrollOffset = " + mScrollOffset + "=====");
         layoutChild(recycler);
         return mScrollOffset - pendingScrollOffset + dy;
@@ -79,15 +88,24 @@ public class SlidePageLayoutManager extends GridLayoutManager {
         return true;
     }
 
+    public void refreshLayout() {
+        layoutChild(recycler);
+    }
+
 
     private void layoutChild(RecyclerView.Recycler recycler) {
         if (getItemCount() == 0) {
             return;
         }
+        Log.i(TAG, "ScrollOffset = " + mScrollOffset + ", maxHeight = " + ((mItemCount - 2) * itemHeight + bottomHeight));
+        if (mScrollOffset >= ((mItemCount - 2) * itemHeight + bottomHeight)) {
+            return;
+        }
         // 第一个可见Item位置
         int firstItemPosition = (int) Math.floor(mScrollOffset / itemHeight);
+        Log.i(TAG, "firstItemPosition = " + firstItemPosition);
         // 如果第一个可见Item位置是最后一个Item，返回
-        if (firstItemPosition > commonAdapter.getItemCount() - 1) {
+        if (firstItemPosition >= commonAdapter.getItemCount() - 1) {
             return;
         }
 
@@ -201,7 +219,12 @@ public class SlidePageLayoutManager extends GridLayoutManager {
     }
 
     public int calculateDistanceToPosition(int targetPos) {
-        int distance = itemHeight * targetPos - mScrollOffset;
+        int distance;
+        if (targetPos >= commonAdapter.getItemCount() - 1) {
+            distance = itemHeight * (targetPos - 1) - mScrollOffset;
+        } else {
+            distance = itemHeight * targetPos - mScrollOffset;
+        }
         LogUtils.LogSlide("calculateDistanceToPosition",
                 new String[]{"targetPos", "distance", "scrollOffset"},
                 targetPos,
@@ -220,9 +243,14 @@ public class SlidePageLayoutManager extends GridLayoutManager {
 
             if (direction > 0) {
                 position = (int) Math.ceil(position);
-            } else {
+            } else if (direction < 0) {
                 position = (int) Math.floor(position);
+            } else {
+                if ((int) position == commonAdapter.getItemCount() - 2) {
+                    position = (int) Math.ceil(position);
+                }
             }
+
             LogUtils.LogSlide(null,
                     new String[]{"ScrollOffset", "itemHeight", "position", "direction"},
                     mScrollOffset,

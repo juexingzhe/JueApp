@@ -9,8 +9,8 @@
 
     <ProgressBar
         android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/loading"
 
@@ -28,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:layout_marginBottom="2dp"
         android:textColor="#ff7a7a7a"
         android:text="加载中" />
 

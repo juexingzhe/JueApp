@@ -41,7 +41,7 @@ public class SlidePageLayoutManager extends GridLayoutManager {
 
         itemWidth = PixelUtils.dip2px(context, 279);
         itemHeight = PixelUtils.dip2px(context, 372);
-        bottomHeight = PixelUtils.dip2px(context, 30);
+        bottomHeight = PixelUtils.dip2px(context, 60);
     }
 
     @Override

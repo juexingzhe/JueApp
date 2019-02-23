@@ -16,8 +16,8 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_video"
-        android:title="@string/action_video"
+        android:id="@+id/action_record_video"
+        android:title="@string/action_record_video"
         app:showAsAction="never" />
 
     <item
@@ -29,6 +29,15 @@
         android:id="@+id/action_region"
         android:title="@string/action_region"
         app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_video"
+        android:title="@string/action_video"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_annotation"
+        android:title="@string/annotation"
+        app:showAsAction="never"/>
 
 
 </menu>

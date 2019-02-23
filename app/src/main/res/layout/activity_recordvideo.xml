@@ -6,27 +6,19 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/startVideo"
+        android:id="@+id/videoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_bg"
-        android:text="@string/start_video" />
+        android:text="@string/capture_video" />
 
     <VideoView
-        android:id="@+id/videoView"
+        android:id="@+id/video"
+        android:visibility="gone"
         android:layout_margin="30dp"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp" />
-
-    <VideoView
-        android:id="@+id/videoViewSecond"
-        android:layout_margin="30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp" />
+        android:layout_height="match_parent" />
 
 
 </LinearLayout>

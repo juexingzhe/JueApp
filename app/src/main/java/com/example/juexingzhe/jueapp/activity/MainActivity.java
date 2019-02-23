@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
         initView();
         setData();
 
+
     }
 
     private void initView() {
@@ -60,8 +61,8 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                 intent = new Intent(this, PhotoActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.action_video:
-                intent = new Intent(this, VideoActivity.class);
+            case R.id.action_record_video:
+                intent = new Intent(this, RecordVideoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.action_camera:
@@ -77,9 +78,17 @@ public class MainActivity extends AppCompatActivity implements Toolbar.OnMenuIte
                 // as a favorite...
                 Toast.makeText(MainActivity.this, "Favorite !", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.action_video:
+                intent = new Intent(this, VideoActivity.class);
+                startActivity(intent);
+            case R.id.action_annotation:
+                intent = new Intent(this, AnnotationActivity.class);
+                startActivity(intent);
             default:
                 break;
         }
         return true;
     }
+
+
 }

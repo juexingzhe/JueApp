@@ -1,13 +1,15 @@
 <resources>
     <string name="app_name">JueApp</string>
     <string name="action_photo">Take Photo</string>
-    <string name="action_video">Record Video</string>
+    <string name="action_record_video">Record Video</string>
     <string name="action_camera">Control Camera</string>
     <string name="action_region">Region Test</string>
+    <string name="action_video">Video</string>
 
     <string name="action_favorite">最爱</string>
     <string name="capture_image">Capture</string>
     <string name="capture_video">Record</string>
+    <string name="start_video">Start</string>
     <string name="fileprovider_authority">com.example.juexingzhe.jueapp.fileprovider</string>
     <string name="anchor">Anchor</string>
     <string name="click">Click</string>
@@ -15,4 +17,5 @@
     <string name="loading_tip">加载中...</string>
     <string name="load_nomore_tip">没有更多数据了</string>
     <string name="load_err_tip">加载失败请点击重试</string>
+    <string name="annotation">Annotation</string>
 </resources>

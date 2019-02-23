@@ -5,23 +5,27 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="true" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".global.JueApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity
+            android:name=".activity.MainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
-            android:name=".activity.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -33,7 +37,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/CameraTheme" />
         <activity
-            android:name=".activity.VideoActivity"
+            android:name=".activity.RecordVideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
@@ -50,13 +54,27 @@
             android:hardwareAccelerated="false"
             android:screenOrientation="portrait"
             android:theme="@style/CameraTheme" />
+        <activity
+            android:name=".activity.VideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/CameraTheme" />
+        <activity
+            android:name=".activity.AnnotationActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/CameraTheme" />
+
         <provider
-            android:authorities="@string/fileprovider_authority"
             android:name="android.support.v4.content.FileProvider"
+            android:authorities="@string/fileprovider_authority"
             android:exported="false"
             android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
 
     </application>

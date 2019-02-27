@@ -8,9 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/Moduleb" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/modelua" />
+            <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/event" />
+            <option value="$PROJECT_DIR$/eventplugin" />
+            <option value="$PROJECT_DIR$/interfaces" />
+            <option value="$PROJECT_DIR$/modulea" />
+            <option value="$PROJECT_DIR$/moduleb" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

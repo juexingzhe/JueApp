@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import com.example.juexingzhe.jueapp.R;
 import com.example.juexingzhe.jueapp.annotation.DisplayFactory;
+import com.example.juexingzhe.modulea.ModuleaMsg;
+import com.example.juexingzhe.moduleb.ModulebMsg;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class AnnotationActivity extends AppCompatActivity {
 
@@ -20,6 +24,14 @@ public class AnnotationActivity extends AppCompatActivity {
         textView = findViewById(R.id.annotation_txt);
 
         loadModule();
+
+        ModuleaMsg moduleaMsg = new ModuleaMsg();
+        moduleaMsg.msg = "send from app";
+        EventBus.getDefault().post(moduleaMsg);
+
+        ModulebMsg modulebMsg = new ModulebMsg();
+        modulebMsg.num = 10086;
+        EventBus.getDefault().post(modulebMsg);
     }
 
     private void loadModule(){

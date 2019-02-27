@@ -1,6 +1,7 @@
 package com.example.juexingzhe.jueapp.annotation;
 
-import com.example.juexingzhe.interfaces.Display;
+
+import com.example.juexingzhe.moduleb.Display;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;

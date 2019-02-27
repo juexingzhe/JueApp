@@ -1,1 +1,1 @@
-include ':app', ':modelua', ':Moduleb'
+include ':app', ':interfaces', ':common', ':eventplugin', ':modulea', ':event', ':moduleb'
